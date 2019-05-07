@@ -3,17 +3,36 @@ package main
 import "fmt"
 
 func majorityElement(nums []int) int {
+	//摩尔投票法
 	res := 0
-	l := len(nums) / 2
-	nMap := make(map[int]int)
+	cnt := 0
 	for _, v := range nums {
-		nMap[v]++
-		if nMap[v]>l {
+		if cnt == 0 {
 			res = v
-			break
+			cnt++
+		} else {
+			if res == v {
+				cnt++
+			} else {
+				cnt--
+			}
 		}
 	}
+
 	return res
+	//hash
+
+	//res := 0
+	//l := len(nums) / 2
+	//nMap := make(map[int]int)
+	//for _, v := range nums {
+	//	nMap[v]++
+	//	if nMap[v]>l {
+	//		res = v
+	//		break
+	//	}
+	//}
+	//return res
 }
 
 func main() {
